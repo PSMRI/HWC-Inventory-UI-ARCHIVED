@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './authentication.service';
 import { ConfirmationService } from '../app-modules/core/services/confirmation.service';
-import * as CryptoJS from 'crypto-js';
+//import * as CryptoJS from 'crypto-js';
+import * as bcrypt from 'bcrypt';
 
 @Component({
   selector: 'app-login-cmp',
@@ -68,36 +69,43 @@ export class LoginComponent implements OnInit {
 
 
 
-  generateKey(salt, passPhrase) {
-    return CryptoJS.PBKDF2(passPhrase, CryptoJS.enc.Hex.parse(salt), {
-      hasher: CryptoJS.algo.SHA512,
-      keySize: this.keySize / 32,
-      iterations: this._iterationCount
-    })
-  }
+  //generateKey(salt, passPhrase) {
+   // return CryptoJS.PBKDF2(passPhrase, CryptoJS.enc.Hex.parse(salt), {
+   //   hasher: CryptoJS.algo.SHA512,
+     // keySize: this.keySize / 32,
+     // iterations: this._iterationCount
+   // })
+ // }
   
 
 
 
-  encryptWithIvSalt(salt, iv, passPhrase, plainText) {
-    let key = this.generateKey(salt, passPhrase);
-    let encrypted = CryptoJS.AES.encrypt(plainText, key, {
-      iv: CryptoJS.enc.Hex.parse(iv)
-    });
-    return encrypted.ciphertext.toString(CryptoJS.enc.Base64);
-  }
+  //encryptWithIvSalt(salt, iv, passPhrase, plainText) {
+   // let key = this.generateKey(salt, passPhrase);
+   // let encrypted = CryptoJS.AES.encrypt(plainText, key, {
+   //   iv: CryptoJS.enc.Hex.parse(iv)
+  //  });
+  //  return encrypted.ciphertext.toString(CryptoJS.enc.Base64);
+  //}
 
-  encrypt(passPhrase, plainText) {
-    let iv = CryptoJS.lib.WordArray.random(this._ivSize / 8).toString(CryptoJS.enc.Hex);
-    let salt = CryptoJS.lib.WordArray.random(this.keySize / 8).toString(CryptoJS.enc.Hex);
-    let ciphertext = this.encryptWithIvSalt(salt, iv, passPhrase, plainText);
-    return salt + iv + ciphertext;
-  }
+  //encrypt(passPhrase, plainText) {
+    //let iv = CryptoJS.lib.WordArray.random(this._ivSize / 8).toString(CryptoJS.enc.Hex);
+    //let salt = CryptoJS.lib.WordArray.random(this.keySize / 8).toString(CryptoJS.enc.Hex);
+    //let ciphertext = this.encryptWithIvSalt(salt, iv, passPhrase, plainText);
+  //  return salt + iv + ciphertext;
+  //}
 
 
   login() {
-    let encryptPassword = this.encrypt(this.Key_IV, this.password)
-    this.authService.login(this.userName.trim(), encryptPassword, false)
+    let plainPassword = this.password;
+    const saltRounds = 10; 
+
+    bcrypt.hash(plainPassword, saltRounds, (err, hash) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+    this.authService.login(this.userName.trim(), hash, false)
       .subscribe(res => {
         if (res.statusCode == '200') {
           if (res.data.previlegeObj && res.data.previlegeObj[0]) {
@@ -112,7 +120,7 @@ export class LoginComponent implements OnInit {
             if(confirmResponse) {
               this.authService.userlogoutPreviousSession(this.userName).subscribe((userlogoutPreviousSession) => {
                 if (userlogoutPreviousSession.statusCode == '200') {
-              this.authService.login(this.userName, encryptPassword, true).subscribe((userLoggedIn) => {
+              this.authService.login(this.userName, hash, true).subscribe((userLoggedIn) => {
                 if (userLoggedIn.statusCode == '200') {
                 if (userLoggedIn.data.previlegeObj != null && userLoggedIn.data.previlegeObj != undefined && userLoggedIn.data.previlegeObj[0]) {
                   this.checkRoleMapped(userLoggedIn.data);
@@ -129,21 +137,24 @@ export class LoginComponent implements OnInit {
                 this.confirmationService.alert(userlogoutPreviousSession.errorMessage, 'error');
               }
           });
+        }});
+      }
         }
           else {
             sessionStorage.clear();
             this.router.navigate(["/login"]);
             // this.confirmationService.alert(res.errorMessage, 'error');
-          }
-        });
-        }
-        else {  
-          this.confirmationService.alert(res.errorMessage, 'error');
-        }
+          //}
+        //});
+        //}
+       // else {  
+         // this.confirmationService.alert(res.errorMessage, 'error');
+        //}
       }
       }, err => {
         this.confirmationService.alert(err, 'error');
       });
+    });
   }
 
   serviceRoleArray: any;
