@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     let plainPassword = this.password;
-    const saltRounds = 10; 
+    const saltRounds = 12; 
 
     bcrypt.hash(plainPassword, saltRounds, (err, hash) => {
       if (err) {
