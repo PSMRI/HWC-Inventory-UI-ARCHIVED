@@ -70,6 +70,7 @@ export class LoginComponent implements OnInit {
 
   generateKey(salt, passPhrase) {
     return CryptoJS.PBKDF2(passPhrase, CryptoJS.enc.Hex.parse(salt), {
+      hasher: CryptoJS.algo.SHA512,
       keySize: this.keySize / 32,
       iterations: this._iterationCount
     })
@@ -192,7 +193,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('userName', loginDataResponse.userName);
       localStorage.setItem('username', this.userName);
       let services = loginDataResponse.previlegeObj.map(item => {
-        if (item.roles[0].serviceRoleScreenMappings[0].providerServiceMapping.serviceID == '4' || item.roles[0].serviceRoleScreenMappings[0].providerServiceMapping.serviceID == '2') {
+        if (item.roles[0].serviceRoleScreenMappings[0].providerServiceMapping.serviceID == '9' || item.roles[0].serviceRoleScreenMappings[0].providerServiceMapping.serviceID == '2') {
           return {
             'serviceID': item.roles[0].serviceRoleScreenMappings[0].providerServiceMapping.serviceID,
             'providerServiceID': item.serviceID,

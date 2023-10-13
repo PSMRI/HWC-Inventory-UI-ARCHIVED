@@ -10,3 +10,7 @@
     letter-spacing: 0.05em;
     max-width: 160px;
 }
+.button-download-disabled[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }

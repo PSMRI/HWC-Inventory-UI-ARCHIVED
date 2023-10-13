@@ -155,7 +155,7 @@ export class AppHeaderComponent implements OnInit, OnChanges, AfterContentChecke
       this.http_service.getCurrentLanguage(response[language]);
       this.roleNavigation();
     } else {
-      alert(this.currentLanguageSet.alerts.info.comingUpWithThisLang + " " + language);
+      alert(this.currentLanguageSet.alerts.comingUpWithThisLang + " " + language);
     }
   }
 
