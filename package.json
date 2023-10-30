@@ -2,10 +2,9 @@
   "name": "inventory-ui",
   "version": "1.0.1",
   "license": "MIT",
-  "main": "main.js",
   "scripts": {
     "ng": "ng",
-    "postinstall": "node version.js",
+    "postinstall": "node version.js && chmod +x ./scripts/*.js",
     "start": "node version.js && ng serve --port 5000 -o",
     "build": "ng build",
     "test": "ng test",
@@ -14,8 +13,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build-dev": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng build --prod",
-    "war": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng build --prod --aot && grunt",
-    "build-test": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng build -e test --aot"
+    "build-test": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng build -e test --aot",
+    "build-ci": "./scripts/ci-prebuild.js && node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng build --prod --environment=ci --aot"
   },
   "private": true,
   "dependencies": {
@@ -63,8 +62,6 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
     "codelyzer": "~3.1.1",
-    "grunt": "^1.0.3",
-    "grunt-war": "^0.5.1",
     "jasmine-core": "2.5.2",
     "jasmine-spec-reporter": "~4.1.0",
     "karma": "~1.7.0",
@@ -81,5 +78,5 @@
     "typescript": "~2.3.3",
     "xlsx": "^0.13.0"
   },
-   "repository": "https://github.com/PSMRI/HWC-Inventory-UI.git"
+  "repository": "https://github.com/PSMRI/HWC-Inventory-UI.git"
 }
