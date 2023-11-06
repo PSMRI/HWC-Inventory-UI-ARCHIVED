@@ -5,7 +5,9 @@
   <meta charset="utf-8">
   <title>Inventory</title>
   <script>
-    document.write('<base href="' + encodeURIComponent(document.location) + '" />');
+    var baseTag = document.createElement('base');
+    baseTag.href = document.location.href;
+    document.head.appendChild(baseTag);
   </script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <base href="/">
