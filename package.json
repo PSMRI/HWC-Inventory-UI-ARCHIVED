@@ -13,8 +13,6 @@
     "coverage": "ng test --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "electron": "electron .",
-    "electron-build": "ng build --prod && electron .",
     "build-dev": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng build --prod",
     "war": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng build --prod --aot && grunt",
     "build-test": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng build -e test --aot"
@@ -65,8 +63,6 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
     "codelyzer": "~3.1.1",
-    "electron": "1.7.10",
-    "electron-packager": "10.1.0",
     "grunt": "^1.0.3",
     "grunt-war": "^0.5.1",
     "jasmine-core": "2.5.2",
@@ -85,5 +81,5 @@
     "typescript": "~2.3.3",
     "xlsx": "^0.13.0"
   },
-  "author": "psharneja@gmail.com"
+   "repository": "https://github.com/PSMRI/HWC-Inventory-UI.git"
 }
