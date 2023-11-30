@@ -382,7 +382,12 @@
             "errorinFetchingData": "Error in Fetching Data, try again later",
             "issueID": "Issue ID",
             "stockAdjustment": "ষ্টক এডজাষ্টমেণ্ট",
-            "toDateCannotBeBeforeFromDate":"To Date cannot be before From Date"
+            "toDateCannotBeBeforeFromDate":"To Date cannot be before From Date",
+            "inwardDate": "Inward Date",
+            "failedStockEntryMessage": "Please click here to see the failed stock list",
+            "listOfFailedStock": "List Of Failed stock",
+            "drugName": "Drug Name",
+            "failedStock": "Failed Stock"
         },
         "healthId":"Health ID"
     }

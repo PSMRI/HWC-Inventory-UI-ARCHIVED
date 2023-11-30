@@ -1,0 +1,36 @@
+.modal-dialog{
+    overflow: auto 
+}
+
+
+.modal-body{
+    overflow: auto ;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.fade{
+    height: 100vh;
+    width: 100vw;
+    box-shadow: 0 3px 5px #00000005,0 0 2px #0000000d,0 1px 4px #00000014!important;
+
+}
+
+.modal-centre{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.sticky-top{
+    position: sticky;
+    top: 0;
+    background-color: #43a047;
+    z-index: 999;
+    
+}
+

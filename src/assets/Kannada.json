@@ -375,7 +375,12 @@
             "batchID": "ಬ್ಯಾಚ್ ಐಡಿ",
             "entryID": "ಪ್ರವೇಶ ಐಡಿ",
             "errorinFetchingData": "ಡೇಟಾವನ್ನು ಪಡೆಯುವಲ್ಲಿ ದೋಷ, ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ",
-            "toDateCannotBeBeforeFromDate":"ದಿನಾಂಕದಿಂದ ದಿನಾಂಕಕ್ಕಿಂತ ಮೊದಲು ಟು ಡೇಟ್ ಇರುವಂತಿಲ್ಲ"
+            "toDateCannotBeBeforeFromDate":"ದಿನಾಂಕದಿಂದ ದಿನಾಂಕಕ್ಕಿಂತ ಮೊದಲು ಟು ಡೇಟ್ ಇರುವಂತಿಲ್ಲ",
+            "inwardDate": "Inward Date",
+            "failedStockEntryMessage": "Please click here to see the failed stock list",
+            "listOfFailedStock": "List Of Failed stock",
+            "drugName": "Drug Name",
+            "failedStock": "Failed Stock"
         },
         "healthId":"ಆರೋಗ್ಯ ಐಡಿ",
         "list": "ಪಟ್ಟಿ"

@@ -375,7 +375,13 @@
             "batchID": "Batch ID",
             "entryID": "Entry ID",
             "errorinFetchingData": "Error in Fetching Data, try again later",
-            "toDateCannotBeBeforeFromDate":"To Date cannot be before From Date"
+            "toDateCannotBeBeforeFromDate":"To Date cannot be before From Date",
+            "inwardDate": "Inward Date",
+            "failedStockEntryMessage": "Please click here to see the failed stock list",
+            "listOfFailedStock": "List Of Failed stock",
+            "drugName": "Drug Name",
+            "failedStock": "Failed Stock"
+            
         },
         "healthId":"Health ID"
     }

@@ -35,6 +35,8 @@ export class PhysicalStockEntryComponent implements OnInit, OnChanges {
   today: Date;
   languageComponent: SetLanguageComponent;
   currentLanguageSet: any;
+  isMainFacility: boolean = false;
+  
 
   constructor(
     private inventoryService: InventoryService,
@@ -49,8 +51,16 @@ export class PhysicalStockEntryComponent implements OnInit, OnChanges {
       userId: localStorage.getItem('userID'),
       facilityID: localStorage.getItem('facilityID'),
       vanID: localStorage.getItem("vanID"),
-      parkingPlaceID: localStorage.getItem("parkingPlaceID")
+      parkingPlaceID: localStorage.getItem("parkingPlaceID"),
+
     }
+    let isMainfacilityFlag = localStorage.getItem('facilityDetail');
+    let facilityData = JSON.parse(isMainfacilityFlag);
+    
+    if(facilityData.storeType.toUpperCase() === "MAIN"){
+        this.isMainFacility = true;
+    } 
+    
 
     this.today = new Date();
     this.fetchLanguageResponse();

@@ -63,7 +63,9 @@ const routes: Routes = [
     path: 'rx',
     canActivate: [AuthGuard],
     loadChildren: './app-modules/rx/rx.module#RxModule'
-  }
+  },
+  
+
 
 ];
 
