@@ -1,0 +1,46 @@
+<div class="row">
+  <div>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" [formGroup]="eAushadhaForm">
+      <md2-datepicker class="input-full-width" name="eAushadhaDateField" formControlName="eAushadhaDateField" placeholder="{{currentLanguageSet?.inventory?.inwardDate}}" [max]="today" (change)="onInwardDateChange()"></md2-datepicker> 
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+      <button md-raised-button class="button-full-width" style="margin-top: 10px;" type="button" color="accent" (click)="geteAushadhaDate()" [disabled]="!eAushadhaForm.controls.eAushadhaDateField.value">Submit</button>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" *ngIf="failedRecordsFlag" style="margin-top: 50px;margin-left: 13px;">
+       <p ><b>Note:</b>{{currentLanguageSet?.inventory?.failedStockEntryMessage}}</p> 
+      <button md-raised-button class=" button-full-width"  type="button" color="primary" data-toggle="modal" data-target="#myModal" (click)="openFailedMedicinePopup()">{{currentLanguageSet?.inventory?.failedStock}}</button>
+    </div>
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-centre">
+        <div class="modal-dialog" style="border: none; height: 350px;">
+          <div class="modal-content" style="border: none;">
+            <div class="modal-header sticky-top">
+              <button type="button" class="close" style="color: white; font-size: 20px;" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" style="color: white;">{{currentLanguageSet?.inventory?.listOfFailedStock}}</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table" *ngIf="failedRecordsArray.length > 0">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">{{currentLanguageSet?.inventory?.drugName}}</th>
+                      <th scope="col">{{currentLanguageSet?.inventory?.batchNo}}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let items of failedRecordsArray">
+                      <td>{{items.DrugName}}</td>
+                      <td>{{items.BatchNo}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" md-raised-button class="pull-right button-full-width" color="primary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

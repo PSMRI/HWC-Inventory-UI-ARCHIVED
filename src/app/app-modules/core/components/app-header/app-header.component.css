@@ -194,3 +194,9 @@ button.mat-button {
   border-radius: 30px;
   color: white;
 }
+
+@media (min-width: 1200px) {
+  .hidden-lg  {
+      display: inline-block !important;
+  }
+  }

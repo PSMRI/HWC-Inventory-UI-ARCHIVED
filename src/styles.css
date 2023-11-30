@@ -418,3 +418,9 @@ table thead tr th {
     border-color: #336CFB !important;
     cursor: default;
 }
+
+@media (min-width: 1200px) {
+  .hidden-lg .hidden-md .hidden-sm {
+      display: inline-block !important;
+  }
+  }

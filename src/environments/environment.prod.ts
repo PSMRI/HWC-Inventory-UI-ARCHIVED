@@ -133,5 +133,6 @@ export const environment = {
   validateSecurityQuestions: `${COMMON_API}user/validateSecurityQuestionAndAnswer`,
 
   /* TransactionID for changing password */
-  getTransacIDForPasswordChange: `${COMMON_API}user/getTransactionIdForChangePassword`
+  getTransacIDForPasswordChange: `${COMMON_API}user/getTransactionIdForChangePassword`,
+  saveEAusadhaStock_Url: `${COMMON_API}eAusadha/create-eAusadha`
 };
