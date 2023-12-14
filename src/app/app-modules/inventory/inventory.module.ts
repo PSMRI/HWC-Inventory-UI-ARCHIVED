@@ -77,6 +77,7 @@ import { RejectItemFromMainstoreModelComponent } from './indent/indent-order-wor
 import { PatientReturnPreviousRecordComponent } from './patient-return/patient-return-previous-record/patient-return-previous-record.component';
 import { ShortExpiryReportComponent } from './reports/short-expiry-report/short-expiry-report.component';
 import { TransitReportComponent } from './reports/transit-report/transit-report.component';
+import { EAushadhaComponent } from './physical-stock-entry/e-aushadha/e-aushadha.component';
 
 @NgModule({
     imports: [
@@ -158,6 +159,7 @@ import { TransitReportComponent } from './reports/transit-report/transit-report.
         PatientReturnPreviousRecordComponent,
         ShortExpiryReportComponent,
         TransitReportComponent,
+        EAushadhaComponent,
     ],
     providers: [
         InventoryService,

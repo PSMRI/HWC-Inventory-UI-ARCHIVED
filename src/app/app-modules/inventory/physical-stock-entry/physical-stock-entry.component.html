@@ -2,12 +2,14 @@
   <form [formGroup]="physicalStockEntryForm" autocomplete="off">
     <div class="row m-t-10">
       <div class="col-xs-12 col-sm-6">
-        <h4>
+        <h4 class="inline-block">
           {{currentLanguageSet?.inventory?.physicalStockEntry}}
         </h4>
       </div>
       <div class="col-xs-12 col-sm-6">
-        <button md-raised-button class="pull-right button-full-width" type="button" color="primary" routerLink="View">{{currentLanguageSet?.inventory?.previousRecords}}</button>
+        
+        <button md-raised-button class="pull-right button-full-width m-l-5"  type="button" color="primary" routerLink="View">{{currentLanguageSet?.inventory?.previousRecords}}</button>
+        <button md-raised-button class="pull-right button-full-width m-l-5" *ngIf="isMainFacility" style="margin-right: 11px;" type="button"  color="primary" routerLink="e-Aushadha">e-Aushadha</button>
       </div>
     </div>
 

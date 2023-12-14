@@ -46,12 +46,18 @@
 				<environment>test</environment>
 			</properties>
 		</profile>
+    <profile>
+      <id>ci</id>
+      <properties>
+        <environment>ci</environment>
+      </properties>
+    </profile>
 	</profiles>
-	
+
 	<!-- we could create individual properties similar to variables -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<final-name>inventoryui-v1.0</final-name>
+		<final-name>hwc-inventory-ui-v1.0</final-name>
 		<hostname-dev>10.208.122.32</hostname-dev>
 		<port-dev>9990</port-dev>
 		<hostname-local>localhost</hostname-local>
@@ -64,14 +70,14 @@
 		<server-hostname>{hostname-${environment}}</server-hostname>
 		<server-port>{port-${environment}}</server-port>
 	</properties>
-	
+
 	<!-- install the necessary node_modules & compile in prod mode -->
 	<build>
 		<finalName>inventory-ui-v1.0</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>3.3.2</version>
 				<configuration>
 					<filesets>
 						<fileset>
@@ -87,40 +93,28 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.6.0</version>
+				<version>3.1.0</version>
 				<executions>
 					<execution>
-						<id>running npm install</id>
+						<id>npm-install</id>
 						<phase>compile</phase>
 						<goals>
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<tasks>
-								<echo>running npm install ---> ${build.timestamp}</echo>
-								<echo>exec-dir: ${project.build.directory}</echo>
-							</tasks>
 							<executable>npm</executable>
-							
 							<arguments>
 								<argument>install</argument>
-								
 							</arguments>
 						</configuration>
 					</execution>
 					<execution>
-						<id>running ng build --${environment}</id>
+						<id>ng-build</id>
 						<phase>compile</phase>
 						<goals>
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<tasks>
-								<echo>running ng build --${environment} ---> ${build.timestamp}</echo>
-								<echo>exec-dir: ${project.build.directory}</echo>
-								<echo>dist-dir: ${project.build.outputDirectory}</echo>
-							</tasks>
-							
 							<executable>npm</executable>
 							<arguments>
 								<argument>run</argument>
@@ -128,13 +122,13 @@
 							</arguments>
 						</configuration>
 					</execution>
-				</executions> 
+				</executions>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.4.2</version>
+				<version>3.3.1</version>
 				<executions>
 					<execution>
 						<id>default-copy-resources</id>
@@ -154,7 +148,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.4</version>
+				<version>3.4.0</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 					<webResources>
@@ -162,9 +156,9 @@
 							<!-- this is relative to the pom.xml directory -->
 							<directory>dist</directory>
 						</resource>
-						<resource>		
-							<filtering>true</filtering>					
-							<directory>src/packaging/</directory>							
+						<resource>
+							<filtering>true</filtering>
+							<directory>src/packaging/</directory>
 						</resource>
 					</webResources>
 				</configuration>
@@ -172,10 +166,10 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.8</version>
+				<version>3.1.0</version>
 				<executions>
 					<execution>
-						<id>properties-updated 1</id>
+						<id>properties-updated</id>
 						<phase>prepare-package</phase>
 						<goals>
 							<goal>run</goal>
@@ -193,27 +187,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- <plugin>
-				<groupId>org.wildfly.plugins</groupId>
-				<artifactId>wildfly-maven-plugin</artifactId>
-				<version>1.2.1.Final</version>
-				<configuration>
-					<id>${server-id}</id>
-					<hostname>$${server-hostname}</hostname>
-					<port>$${server-port}</port>
-					<username>admin</username>
-					<password>ad@min123</password>
-
-				</configuration>
-				<executions>
-					<execution>
-						<phase>install</phase>
-						<goals>
-							<goal>deploy</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin> -->
 		</plugins>
 	</build>
 </project>

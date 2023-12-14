@@ -32,6 +32,7 @@ import { YearlyReportComponent} from './reports/yearly-report/yearly-report.comp
 import { TransitReportComponent } from './reports/transit-report/transit-report.component';
 import { ShortExpiryReportComponent } from './reports/short-expiry-report/short-expiry-report.component'; 
 import { PatientReturnPreviousRecordComponent } from './patient-return/patient-return-previous-record/patient-return-previous-record.component';
+import { EAushadhaComponent } from './physical-stock-entry/e-aushadha/e-aushadha.component';
 
 const routes: Routes = [
   {
@@ -166,6 +167,10 @@ const routes: Routes = [
       {
         path:'transitReport',
         component:TransitReportComponent
+      },
+      {
+        path: 'physicalStockEntry/e-Aushadha',
+        component:EAushadhaComponent,
       }
     ]
   },

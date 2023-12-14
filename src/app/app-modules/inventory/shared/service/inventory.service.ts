@@ -383,4 +383,10 @@ export class InventoryService {
     return this.http.post(environment.lastUpdatedStockLogUrl, facilityID)
     .map((res) => res.json());
   }
+
+  saveEAusadha(obj) {
+    return this.http.post(environment.saveEAusadhaStock_Url, obj)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
 }
